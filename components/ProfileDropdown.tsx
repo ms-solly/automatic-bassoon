@@ -58,7 +58,7 @@ const ProfileDropdown = ({ userId, onSignOut }: { userId: string; onSignOut: () 
           <ul className="text-left">
             {/* Settings link */}
             <li className="p-3 hover:bg-gray-100 cursor-pointer">
-              <a href="/settings" className="block w-full">
+              <a href="/account" className="block w-full">
                 Settings
               </a>
             </li>
