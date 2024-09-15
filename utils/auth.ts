@@ -11,7 +11,7 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `env.siteUrl`, 
+      redirectTo: `https://automatic-bassoon-rho.vercel.app`, 
     },
   });
 
