@@ -12,7 +12,7 @@ interface User {
   website: string
 }
 
-export default function AccountForm({ user }: { user: User }) {
+export default function defaultAccountForm({ user }: { user: User }) {
   const supabase = createClient()  // Initialize supabase client
 
   const [avatarUrl, setAvatarUrl] = useState(user?.avatar_url || '')
