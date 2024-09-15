@@ -1,11 +1,19 @@
-import { signInAction } from "@/app/actions";
+// app/(auth-pages)/sign-in/page.tsx
+'use client';
+
+import { signInWithGoogle } from "@/utils/auth";
 import { FormMessage, Message } from "@/components/form-message";
 import { SubmitButton } from "@/components/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { signInAction } from "@/app/actions";
 
 export default function Login({ searchParams }: { searchParams: Message }) {
+  const handleSignInWithGoogle = async () => {
+    await signInWithGoogle();
+  };
+
   return (
     <form className="flex-1 flex flex-col min-w-64">
       <h1 className="text-2xl font-medium">Sign in</h1>
@@ -20,22 +28,21 @@ export default function Login({ searchParams }: { searchParams: Message }) {
         <Input name="email" placeholder="you@example.com" required />
         <div className="flex justify-between items-center">
           <Label htmlFor="password">Password</Label>
-          <Link
-            className="text-xs text-foreground underline"
-            href="/forgot-password"
-          >
+          <Link className="text-xs text-foreground underline" href="/forgot-password">
             Forgot Password?
           </Link>
         </div>
-        <Input
-          type="password"
-          name="password"
-          placeholder="Your password"
-          required
-        />
+        <Input type="password" name="password" placeholder="Your password" required />
         <SubmitButton pendingText="Signing In..." formAction={signInAction}>
           Sign in
         </SubmitButton>
+        <button
+          type="button"
+          className="text-blue-500"
+          onClick={handleSignInWithGoogle}
+        >
+          Sign in with Google
+        </button>
         <FormMessage message={searchParams} />
       </div>
     </form>
