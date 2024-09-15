@@ -26,12 +26,13 @@ export default function Account() {
         return;
       }
 
+      // Use `user_metadata` instead of `raw_user_meta_data`
       const userData = data.user ? {
         id: data.user.id,
-        fullname: data.user.raw_user_meta_data?.full_name || '',
-        username: data.user.raw_user_meta_data?.username || '',
-        avatar_url: data.user.raw_user_meta_data?.avatar_url || '',
-        website: data.user.raw_user_meta_data?.website || '',
+        fullname: data.user.user_metadata?.full_name || '',
+        username: data.user.user_metadata?.username || '',
+        avatar_url: data.user.user_metadata?.avatar_url || '',
+        website: data.user.user_metadata?.website || '',
       } : null;
 
       setUser(userData);
