@@ -19,6 +19,13 @@ const config = {
     },
     extend: {
       colors: {
+        neon: {
+          green: '#5DFDCB',
+          pink: '#FF61E6',
+          blue: '#5DA3FD',
+          yellow: '#FFFD61',
+        },
+        
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -53,6 +60,7 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

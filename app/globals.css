@@ -67,3 +67,21 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* @layer base {
+  .shadow-neon-green {
+    box-shadow: 0 4px 30px rgba(93, 253, 203, 0.4);
+  }
+  .shadow-neon-pink {
+    box-shadow: 0 4px 30px rgba(255, 97, 230, 0.4);
+  }
+  .shadow-neon-blue {
+    box-shadow: 0 4px 30px rgba(93, 163, 253, 0.4);
+  }
+  .shadow-neon-yellow {
+    box-shadow: 0 4px 30px rgba(255, 253, 97, 0.4);
+  }
+  .shadow-neu {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.5);
+  }
+} */

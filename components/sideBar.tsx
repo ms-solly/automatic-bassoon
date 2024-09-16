@@ -47,51 +47,52 @@ export default function SidebarWithTheme() {
 
           {/* Navigation */}
           <nav className="space-y-8">
-            <a
-              href="/feed"
-              className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
-            >
-              <FaHome className={`text-2xl ${iconColor}`} />
-              <span
-                className={`absolute left-16 opacity-0 group-hover:opacity-100 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md`}
-              >
-                Feed
-              </span>
-            </a>
-            <a
-              href="/discover"
-              className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
-            >
-              <FaSearch className={`text-2xl ${iconColor}`} />
-              <span
-                className={`absolute left-16 opacity-0 group-hover:opacity-100 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md`}
-              >
-                Discover
-              </span>
-            </a>
-            <a
-              href="/messages"
-              className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
-            >
-              <FaEnvelope className={`text-2xl ${iconColor}`} />
-              <span
-                className={`absolute left-16 opacity-0 group-hover:opacity-100 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md`}
-              >
-                Messages
-              </span>
-            </a>
-            <a
-              href="/profile"
-              className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
-            >
-              <FaUser className={`text-2xl ${iconColor}`} />
-              <span
-                className={`absolute left-16 opacity-0 group-hover:opacity-100 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md`}
-              >
-                Profile
-              </span>
-            </a>
-          </nav>
+  <a
+    href="/feed"
+    className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
+  >
+    <FaHome className={`text-2xl ${iconColor} group-hover:scale-110`} />
+    <span
+      className={`absolute left-16 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:translate-y-1 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md pointer-events-none`}
+    >
+      Feed
+    </span>
+  </a>
+  <a
+    href="/discover"
+    className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
+  >
+    <FaSearch className={`text-2xl ${iconColor} group-hover:scale-110`} />
+    <span
+      className={`absolute left-16 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:translate-y-1 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md pointer-events-none`}
+    >
+      Discover
+    </span>
+  </a>
+  <a
+    href="/messages"
+    className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
+  >
+    <FaEnvelope className={`text-2xl ${iconColor} group-hover:scale-110`} />
+    <span
+      className={`absolute left-16 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:translate-y-1 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md pointer-events-none`}
+    >
+      Messages
+    </span>
+  </a>
+  <a
+    href="/profile"
+    className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
+  >
+    <FaUser className={`text-2xl ${iconColor} group-hover:scale-110`} />
+    <span
+      className={`absolute left-16 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:translate-y-1 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md pointer-events-none`}
+    >
+      Profile
+    </span>
+  </a>
+</nav>
+
         </aside>
 
         {isSidebarOpen && (
