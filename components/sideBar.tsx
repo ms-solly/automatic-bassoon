@@ -34,7 +34,7 @@ export default function SidebarWithTheme() {
       <div className="min-h-fit relative rounded-lg">
         {/* Sidebar */}
         <aside
-          className={`fixed inset-y-0 left-0 z-30 p-6 transition-all duration-300 ease-in-out transform ${
+          className={`fixed inset-y-0 left-0 z-30 p-6 transition-all duration-300 ease-in-out transform min-h-fit ${
             isSidebarOpen ? "w-64" : "w-16"
           } bg-transparent shadow-lg hover:shadow-2xl backdrop-blur-sm`}
         >
