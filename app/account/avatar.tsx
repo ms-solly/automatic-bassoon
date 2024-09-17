@@ -1,97 +1,59 @@
-'use client'
-import React, { useEffect, useState } from 'react'
-import { createClient } from '@/utils/supabase/client'
-import Image from 'next/image'
+'use client';
 
-export default function Avatar({
-  uid,
-  url,
-  size,
-  onUpload,
-}: {
-  uid: string | null
-  url: string | null
-  size: number
-  onUpload: (url: string) => void
-}) {
-  const supabase = createClient()
-  const [avatarUrl, setAvatarUrl] = useState<string | null>(url)
-  const [uploading, setUploading] = useState(false)
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { createClient } from '@/utils/supabase/client';
+import { Input } from '@/components/ui/input';
 
-  useEffect(() => {
-    async function downloadImage(path: string) {
-      try {
-        const { data, error } = await supabase.storage.from('avatars').download(path)
-        if (error) {
-          throw error
-        }
+interface AvatarProps {
+  uid: string;
+  url: string;
+  size: number;
+  onUpload: (url: string) => void;
+}
 
-        const url = URL.createObjectURL(data)
-        setAvatarUrl(url)
-      } catch (error) {
-        console.log('Error downloading image: ', error)
-      }
+const Avatar: React.FC<AvatarProps> = ({ uid, url, size, onUpload }) => {
+  const [imageUrl, setImageUrl] = useState(url);
+
+  const uploadAvatar = async (file: File) => {
+    const supabase = createClient();
+
+    const { error, data } = await supabase.storage
+      .from('avatars')
+      .upload(`public/${uid}/${file.name}`, file);
+
+    if (error) {
+      console.error('Error uploading avatar:', error.message);
+    } else if (data) {
+      const newUrl = `https://your-supabase-url/storage/v1/object/public/${data.path}`;
+      setImageUrl(newUrl);
+      onUpload(newUrl);
     }
+  };
 
-    if (url) downloadImage(url)
-  }, [url, supabase])
-
-  const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
-    try {
-      setUploading(true)
-
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error('You must select an image to upload.')
-      }
-
-      const file = event.target.files[0]
-      const fileExt = file.name.split('.').pop()
-      const filePath = `${uid}-${Math.random()}.${fileExt}`
-
-      const { error: uploadError } = await supabase.storage.from('avatars').upload(filePath, file)
-
-      if (uploadError) {
-        throw uploadError
-      }
-
-      onUpload(filePath)
-    } catch (error) {
-      alert('Error uploading avatar!')
-    } finally {
-      setUploading(false)
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      uploadAvatar(event.target.files[0]);
     }
-  }
+  };
 
   return (
-    <div>
-      {avatarUrl ? (
-        <Image
-          width={size}
-          height={size}
-          src={avatarUrl}
-          alt="Avatar"
-          className="avatar image"
-          style={{ height: size, width: size }}
-        />
-      ) : (
-        <div className="avatar no-image" style={{ height: size, width: size }} />
-      )}
-      <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
-          {uploading ? 'Uploading ...' : 'Upload'}
-        </label>
-        <input
-          style={{
-            visibility: 'hidden',
-            position: 'absolute',
-          }}
-          type="file"
-          id="single"
-          accept="image/*"
-          onChange={uploadAvatar}
-          disabled={uploading}
-        />
-      </div>
+    <div className="relative">
+      <Image
+        src={imageUrl}
+        alt="Avatar"
+        width={size}
+        height={size}
+        className="rounded-full"
+      />
+      <Input
+        type="file"
+        accept="image/*"
+        onChange={handleFileChange}
+        className="absolute bottom-0 right-0 opacity-0 cursor-pointer"
+      />
     </div>
-  )
-}
+  );
+};
+
+export default Avatar;

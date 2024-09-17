@@ -1,9 +1,10 @@
+import Image from 'next/image';
 import React from 'react';
 
 const Story: React.FC = () => {
   const stories = [
-    { id: 1, image: '/story1.jpg', user: 'VeganGuru' },
-    { id: 2, image: '/story2.jpg', user: 'PlantLover' },
+    { id: 1, image: '/profile.jpg', user: 'VeganGuru' },
+    { id: 2, image: '/profile.jpg', user: 'PlantLover' },
   ];
 
   return (
@@ -11,7 +12,9 @@ const Story: React.FC = () => {
       {stories.map((story) => (
         <div key={story.id} className="relative group">
           <div className="rounded-full p-1 bg-gradient-to-r from-neon-pink via-neon-blue to-neon-green group-hover:shadow-neon transition-all duration-300">
-            <img
+            <Image
+            width={16}
+            height={16}
               src={story.image}
               alt={story.user}
               className="w-16 h-16 rounded-full object-cover"

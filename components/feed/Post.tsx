@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image";
 import { useState } from "react";
 
 interface PostProps {
@@ -13,7 +14,7 @@ const PostCard: React.FC<PostProps> = ({ author, content, imageUrl }) => {
   return (
     <div className="bg-background shadow-lg p-6 rounded-xl dark:bg-gray-800 transition-all duration-300 hover:shadow-neon-green hover:bg-gray-100 dark:hover:bg-gray-700">
       <div className="flex items-center space-x-4">
-        <img src="/user-avatar.jpg" alt="User" className="w-12 h-12 rounded-full border-4 border-neon-green shadow-md" />
+        <Image src="/profile.jpg" height={12} width={12} alt="User" className="w-12 h-12 rounded-full border-4 border-neon-green shadow-md" />
         <div>
           <h3 className="text-lg font-semibold text-foreground dark:text-white">Vegan Recipe</h3>
           <p className="text-sm text-muted-foreground dark:text-gray-400">by VeganChef</p>
@@ -30,7 +31,7 @@ const PostCard: React.FC<PostProps> = ({ author, content, imageUrl }) => {
       </button>
       <div className="mt-4 flex justify-between items-center">
         <div className="flex space-x-3">
-          <button className="text-neon-green hover:scale-110 transition-transform">🍃 Like</button>
+          <button className="text-neon-green hover:scale-110 transition-transform">🍃 leaf</button>
           <button className="text-neon-yellow hover:scale-110 transition-transform">💬 Comment</button>
           <button className="text-neon-pink hover:scale-110 transition-transform">🔗 Share</button>
         </div>

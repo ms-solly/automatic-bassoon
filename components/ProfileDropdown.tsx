@@ -1,11 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { createClient } from "@/utils/supabase/client"; // Client-side Supabase helper
+import { createClient } from "@/utils/supabase/client";
 
 const ProfileDropdown = ({ userId, onSignOut }: { userId: string; onSignOut: () => void }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [profile, setProfile] = useState<{ full_name: string; avatar_url: string } | null>(null);
+  const [profile, setProfile] = useState<{ full_name: string } | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
@@ -13,7 +13,7 @@ const ProfileDropdown = ({ userId, onSignOut }: { userId: string; onSignOut: () 
     const fetchProfile = async () => {
       const { data, error } = await supabase
         .from("profiles")
-        .select("full_name, avatar_url")
+        .select("full_name")
         .eq("id", userId)
         .single();
 
@@ -27,31 +27,31 @@ const ProfileDropdown = ({ userId, onSignOut }: { userId: string; onSignOut: () 
     fetchProfile();
   }, [userId]);
 
-  // Construct the full image URL if the avatar_url is relative
-  const imageUrl = profile?.avatar_url
-    ? profile.avatar_url.startsWith("http")
-      ? profile.avatar_url
-      : `https://seddbwbrfsogueadwive.supabase.co/storage/v1/s3${profile.avatar_url}` // Replace with your Supabase storage base URL
-    : "/default-avatar.png"; // Default avatar fallback
+ 
+  const defaultImageUrl = "/profile.jpg"; // Default avatar
 
   return (
     <div className="relative">
-      {/* Profile avatar and name */}
+
       <div
         className="flex items-center space-x-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
-        onBlur={() => setIsOpen(false)} // Closes dropdown on blur
+        onBlur={() => setIsOpen(false)} 
       >
-        <Image
-          src={imageUrl} // Use the constructed image URL
-          alt="Profile Picture"
-          width={40}
-          height={40}
-          className="rounded-full"
-        />
-        <span className="font-semibold">{profile?.full_name || "Loading..."}</span>
+        <div className="relative">
+          {/* Default Profile Image */}
+          <Image
+            src={defaultImageUrl}
+            alt="Profile Picture"
+            width={40} 
+            height={40}
+            className="rounded-full object-cover" 
+          />
+        </div>
+        <div>
+          <span className="font-semibold">{profile?.full_name || "Loading..."}</span>
+        </div>
       </div>
-
       {/* Dropdown Menu */}
       {isOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md border border-gray-200 z-10 text-black">

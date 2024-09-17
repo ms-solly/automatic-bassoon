@@ -1,74 +1,70 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import Avatar from './avatar'
-import { createClient } from '@/utils/supabase/client'  // Adjust this import to match your project structure
+import { useState } from 'react';
+import Avatar from './avatar'; // Ensure this is correctly imported
+import { createClient } from '@/utils/supabase/client';
 
 interface User {
-  id: string
-  fullname: string
-  username: string
-  avatar_url: string
-  website: string
+  id: string;
+  fullname: string;
+  username: string;
+  avatar_url: string;
+  website: string;
 }
 
-export default function defaultAccountForm({ user }: { user: User }) {
-  const supabase = createClient()  // Initialize supabase client
+export default function AccountForm({ user }: { user: User }) {
+  const supabase = createClient();
 
-  const [avatarUrl, setAvatarUrl] = useState(user?.avatar_url || '')
-  const [fullname, setFullname] = useState(user?.fullname || '')
-  const [username, setUsername] = useState(user?.username || '')
-  const [website, setWebsite] = useState(user?.website || '')
+  const [avatarUrl, setAvatarUrl] = useState(user?.avatar_url || '');
+  const [fullname, setFullname] = useState(user?.fullname || '');
+  const [username, setUsername] = useState(user?.username || '');
+  const [website, setWebsite] = useState(user?.website || '');
 
-  // Function to handle updating the profile
-  const updateProfile = async (profileData: any) => {
+  const updateProfile = async (profileData: { fullname: string; username: string; website: string; avatar_url: string }) => {
     const { fullname, username, website, avatar_url } = profileData;
-  
-    // Ensure you're sending non-null values or handling defaults
+
     const profileUpdate = {
-      full_name: fullname || user.fullname,  // Use existing value if undefined
+      full_name: fullname || user.fullname,
       username: username || user.username,
       website: website || user.website,
       avatar_url: avatar_url || user.avatar_url,
     };
-  
+
     try {
       const { error } = await supabase
         .from('profiles')
         .update(profileUpdate)
         .eq('id', user.id);
-      
+
       if (error) {
+        console.error('Error updating profile:', error.message);
         throw error;
       }
-  
+
       alert('Profile updated successfully!');
     } catch (error) {
-      console.error('Error updating profile:', error);
       alert('Error updating the profile!');
+      console.error('Error during profile update:', error);
     }
-  }
+  };
 
-  // Handler for form submission
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
-    updateProfile({ fullname, username, website, avatar_url: avatarUrl })
-  }
+    event.preventDefault();
+    updateProfile({ fullname, username, website, avatar_url: avatarUrl });
+  };
 
   return (
     <form onSubmit={handleSubmit} className="form-widget">
-      {/* Avatar Upload */}
       <Avatar
         uid={user?.id ?? null}
         url={avatarUrl}
         size={150}
-        onUpload={(url) => {
-          setAvatarUrl(url)
-          updateProfile({ fullname, username, website, avatar_url: url })
+        onUpload={(url: string) => {
+          setAvatarUrl(url);
+          updateProfile({ fullname, username, website, avatar_url: url });
         }}
       />
 
-      {/* Full Name Input */}
       <div className="mb-4">
         <label htmlFor="fullname" className="block text-sm font-medium">
           Full Name
@@ -82,7 +78,6 @@ export default function defaultAccountForm({ user }: { user: User }) {
         />
       </div>
 
-      {/* Username Input */}
       <div className="mb-4">
         <label htmlFor="username" className="block text-sm font-medium">
           Username
@@ -96,7 +91,6 @@ export default function defaultAccountForm({ user }: { user: User }) {
         />
       </div>
 
-      {/* Website Input */}
       <div className="mb-4">
         <label htmlFor="website" className="block text-sm font-medium">
           Website
@@ -110,7 +104,6 @@ export default function defaultAccountForm({ user }: { user: User }) {
         />
       </div>
 
-      {/* Submit Button */}
       <button
         type="submit"
         className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
@@ -118,5 +111,5 @@ export default function defaultAccountForm({ user }: { user: User }) {
         Save Changes
       </button>
     </form>
-  )
+  );
 }

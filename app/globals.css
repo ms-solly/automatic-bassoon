@@ -68,6 +68,17 @@
   }
 }
 
+@keyframes pulse-neon {
+  0% { border-color: rgba(255, 97, 230, 0.2); }
+  50% { border-color: rgba(255, 97, 230, 0.6); }
+  100% { border-color: rgba(255, 97, 230, 0.2); }
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s infinite;
+}
+
+
 /* @layer base {
   .shadow-neon-green {
     box-shadow: 0 4px 30px rgba(93, 253, 203, 0.4);

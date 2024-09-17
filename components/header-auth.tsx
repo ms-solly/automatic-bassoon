@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import ProfileDropdown from "./ProfileDropdown";
 import { createClient } from "@/utils/supabase/client"; // Client-side Supabase helper
+import { Button } from "./ui/button";
 
 export default function AuthButton() {
   const [user, setUser] = useState<any>(null); // Store user data
@@ -28,12 +29,12 @@ export default function AuthButton() {
   if (!user) {
     return (
       <div className="flex gap-2">
-        <button className="btn btn-outline">
+        <Button className="btn btn-outline">
           <a href="/sign-in">Sign in</a>
-        </button>
-        <button className="btn btn-primary">
+        </Button>
+        <Button className="btn btn-primary">
           <a href="/sign-up">Sign up</a>
-        </button>
+        </Button>
       </div>
     );
   }
