@@ -24,12 +24,17 @@ const PostCard: React.FC<PostProps> = ({ author, content, imageUrl }) => {
   };
 
   return (
-    <div className="bg-background shadow-lg p-6 rounded-xl dark:bg-gray-800 transition-all duration-300 hover:shadow-neon-green hover:bg-gray-100 dark:hover:bg-gray-700">
+    <div className="relative bg-background shadow-lg p-6 rounded-xl dark:bg-gray-800 transition-all duration-300 hover:shadow-neon-green hover:bg-gray-100 dark:hover:bg-gray-700">
+      {/* Timestamp */}
+      <div className="absolute top-3 right-3 text-muted text-sm dark:text-gray-400">
+        2 mins ago
+      </div>
+
       <div className="flex items-center space-x-4">
         <Image
           src="/profile.jpg"
-          height={12}
-          width={12}
+          height={48}
+          width={48}
           alt="User"
           className="w-12 h-12 rounded-full border-4 border-neon-green shadow-md"
         />
@@ -61,7 +66,6 @@ const PostCard: React.FC<PostProps> = ({ author, content, imageUrl }) => {
           <CommentButton onClick={() => setShowCommentInput(!showCommentInput)} />
           <ShareButton url="https://automatic-bassoon-rho.vercel.app/" />
         </div>
-        <div className="text-muted text-sm dark:text-gray-400">2 mins ago</div>
       </div>
 
       {/* Comment Section */}
