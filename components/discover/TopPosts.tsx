@@ -1,5 +1,5 @@
 "use client";
-import PostCard from "../PostCard";
+import PostCard from "../ui/special/cards/PostCard";
 const topPostsData = [
     {
         author: "VeganChef123",

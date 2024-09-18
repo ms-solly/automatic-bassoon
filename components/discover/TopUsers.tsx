@@ -1,5 +1,5 @@
 "use client";
-import UserCard from "../UserCard";
+import UserCard from "../ui/special/cards/UserCard";
 
 interface User {
     id: number;

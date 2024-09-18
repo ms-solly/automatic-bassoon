@@ -1,6 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { MdEnergySavingsLeaf } from "react-icons/md";
+import { CiSaveDown1 } from "react-icons/ci";
+import { Button } from "../../button";
+import SaveButton from "../buttons/SaveBtn";
+import LeafButton from "../buttons/LeafBtn";
+
 
 interface RecipeProps {
     title: string;
@@ -22,8 +28,9 @@ const RecipeCard: React.FC<RecipeProps> = ({ title, description, imageUrl }) => 
             </div>
             <div className="mt-4 flex justify-between items-center">
                 <div className="flex space-x-3">
-                    <button className="text-neon-green hover:scale-110 transition-transform">🍃 Leaf</button>
-                    <button className="text-neon-yellow hover:scale-110 transition-transform">💾 Save</button>
+<LeafButton/>
+<SaveButton/>
+
                 </div>
             </div>
         </div>

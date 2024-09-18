@@ -1,5 +1,5 @@
 import React from 'react';
-import PostCard from '@/components/PostCard';
+import PostCard from '@/components/ui/special/cards/PostCard';
 import Story from '@/components/feed/Story';
 import PersonalizedRecommendations from '@/components/feed/Recommendation';
 import QuickInteractionButtons from '@/components/feed/QuickButtons';

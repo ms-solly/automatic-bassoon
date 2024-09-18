@@ -1,5 +1,5 @@
 "use client";
-import RecipeCard from "../RecipeCard";
+import RecipeCard from "../ui/special/cards/RecipeCard";
 
 interface Recipe {
     id: number;
