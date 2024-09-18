@@ -98,4 +98,4 @@ const PostCard: React.FC<PostProps> = ({ author, content, imageUrl }) => {
   );
 };
 
-export default PostCard;
+export default PostCard; 
