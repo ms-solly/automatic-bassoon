@@ -96,3 +96,61 @@
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.5);
   }
 } */
+
+/* Neon Colors */
+.bg-neon-pink { background-color: #ff00ff; }
+.bg-neon-green { background-color: #00ff00; }
+.bg-neon-blue { background-color: #00bfff; }
+.text-neon-pink { color: #ff00ff; }
+.text-neon-green { color: #00ff00; }
+.text-neon-blue { color: #00bfff; }
+.neon-text { color: #fff; text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75); }
+.neon-border { border: 2px solid rgba(255, 255, 255, 0.75); border-radius: 10px; }
+.neon-background { background-color: #1a1a1a; }
+.neon-input { background-color: #333; color: #fff; border: 1px solid #444; }
+.neon-button { background: #00ff00; color: #000; padding: 0.5rem 1rem; border-radius: 5px; }
+.neon-text { color: #fff; text-shadow: 0 0 8px #00ff00; }
+.neon-button:hover { box-shadow: 0px 0px 15px 3px rgba(0, 255, 0, 0.7); }
+.neon-border { border: 2px solid #00ff00; border-radius: 10px; }
+.chat-bubble {
+  @apply max-w-xs p-3 rounded-lg shadow-md transition-shadow duration-200;
+}
+
+.chat-bubble.received {
+  @apply bg-gradient-to-r from-green-200 to-green-400 text-gray-900 shadow-neon-green;
+}
+
+.chat-bubble.sent {
+  @apply bg-gradient-to-r from-pink-200 to-pink-400 text-gray-900 shadow-neon-pink;
+}
+
+.chat-list {
+  @apply overflow-y-auto max-h-[80vh] p-4;
+}
+
+.message-input {
+  @apply p-4 bg-background border-t border-border;
+}
+
+/* Neon effects */
+.hover\:neon:hover {
+  @apply animate-pulse-neon;
+}
+
+@layer components {
+  .neon-glow-red {
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.6), 0 0 20px rgba(255, 0, 0, 0.4);
+  }
+  .neon-glow-gray {
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.6), 0 0 20px rgba(128, 128, 128, 0.4);
+  }
+  .neon-glow-blue {
+    box-shadow: 0 0 10px rgba(0, 128, 255, 0.6), 0 0 20px rgba(0, 128, 255, 0.4);
+  }
+  .neon-glow-close {
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.6), 0 0 20px rgba(255, 255, 255, 0.4);
+  }
+  .neon-text {
+    text-shadow: 0 0 8px rgba(255, 97, 230, 0.8), 0 0 12px rgba(255, 97, 230, 0.6);
+  }
+}
