@@ -24,7 +24,7 @@ const PostCard: React.FC<PostProps> = ({ author, content, imageUrl }) => {
   };
 
   return (
-    <div className="relative bg-background shadow-lg p-6 rounded-xl dark:bg-gray-800 transition-all duration-300 hover:shadow-neon-green hover:bg-gray-100 dark:hover:bg-gray-700">
+    <div className="my-5 relative bg-background shadow-lg p-6 rounded-xl dark:bg-gray-800 transition-all duration-300 hover:shadow-neon-green hover:bg-gray-100 dark:hover:bg-gray-700">
       {/* Timestamp */}
       <div className="absolute top-3 right-3 text-muted text-sm dark:text-gray-400">
         2 mins ago
