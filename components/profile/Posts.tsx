@@ -7,7 +7,7 @@ interface PostsProps {
 
 const Posts: React.FC<PostsProps> = ({ posts, isDarkMode }) => {
   return (
-    <div className={`mt-6 p-6 rounded-xl shadow-lg ${isDarkMode ? 'bg-transparent' : 'bg-transparent'} transition-all duration-300`}>
+    <div className={`mt-6 p-6 rounded-xl shadow-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} transition-all duration-300`}>
       <h2 className={`text-xl font-bold text-center ${isDarkMode ? 'text-white' : 'text-black'} mb-2 border-b-2 border-neon-blue`}>
         Posts
       </h2>
