@@ -64,7 +64,7 @@ const ProfilePg: React.FC = () => {
   }
 
   return (
-    <div className={`min-h-screen p-8 ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'}`}>
+    <div className={`min-h-screen p-8 ${isDarkMode ? 'bg-transparent' : 'bg-transparent'}`}>
       <Header
         avatarUrl={userData.avatarUrl}
         name={userData.name}
