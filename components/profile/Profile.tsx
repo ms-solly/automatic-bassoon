@@ -60,7 +60,10 @@ const ProfilePg: React.FC = () => {
   }, []);
 
   if (!userData) {
-    return <div>Loading...</div>; // Optional: Loading state while fetching data
+    return <div ><p className="text-center text-sm semi-bold">
+      Probably you haven't logged in your account </p>
+      <h1 className="text-center text-4xl bold">Log in to see your profile</h1>
+            </div>; // Optional: Loading state while fetching data
   }
 
   return (
