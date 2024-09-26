@@ -57,15 +57,21 @@ const ProfileDropdown = ({ userId, onSignOut }: { userId: string; onSignOut: () 
         <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md border border-gray-200 z-10 text-black">
           <ul className="text-left">
             {/* Settings link */}
-            <li className="p-3 hover:bg-gray-100 cursor-pointer">
+            <li className="p-3  hover:bg-gray-800/30 cursor-pointer">
+              <a href="/profile" className="block w-full">
+                View Profile
+              </a>
+            </li>
+            <li className="p-3  hover:bg-gray-800/30 cursor-pointer">
               <a href="/settings" className="block w-full">
                 Settings
               </a>
             </li>
             {/* Sign Out button */}
-            <li className="p-3 hover:bg-gray-100 cursor-pointer" onClick={onSignOut}>
+            <li className="p-3 hover:bg-gray-800/30 cursor-pointer" onClick={onSignOut}>
               Sign Out
             </li>
+            
           </ul>
         </div>
       )}
