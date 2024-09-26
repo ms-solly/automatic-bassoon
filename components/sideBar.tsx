@@ -3,6 +3,8 @@
 import { ThemeProvider, useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { FaHome, FaSearch, FaEnvelope, FaUser } from "react-icons/fa";
+import { FaUserGroup } from "react-icons/fa6";
+
 
 export default function SidebarWithTheme() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -89,6 +91,18 @@ export default function SidebarWithTheme() {
       className={`absolute left-16 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:translate-y-1 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md pointer-events-none`}
     >
       Profile
+    </span>
+  </a>
+
+  <a
+    href="/communities"
+    className={`group flex items-center justify-center rounded-lg transition relative ${hoverBg}  `}
+  >
+    <FaUserGroup className={`text-2xl ${iconColor} group-hover:scale-110`} />
+    <span
+      className={`absolute left-16 opacity-0 group-hover:opacity-100 group-hover:translate-x-2 group-hover:translate-y-1 ${tooltipBg} text-sm rounded-md px-2 py-1 transition-opacity shadow-md pointer-events-none`}
+    >
+      Communities
     </span>
   </a>
 </nav>
