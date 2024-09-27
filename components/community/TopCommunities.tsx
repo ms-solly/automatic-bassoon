@@ -1,31 +1,22 @@
 import React from 'react';
 import CommunityCard from '../ui/special/cards/CommunityCard';
 
-interface Community {
-  id: number;
-  name: string;
-  members: number;
-  category: string;
-}
+const sampleCommunities = [
+  { id: 1, name: 'Vegan Cooking Club', members: 120, category: 'Cooking', imageUrl: '/profile.jpg' },
+  { id: 2, name: 'Plant-Based Nutrition', members: 95, category: 'Health', imageUrl: '/profile.jpg' },
+  { id: 3, name: 'Vegan Lifestyle Advocates', members: 75, category: 'Lifestyle', imageUrl: '/profile.jpg' },
+];
 
-interface TopCommunitiesProps {
-  communities: Community[];
-}
-
-const TopCommunities: React.FC<TopCommunitiesProps> = ({ communities }) => {
+const TopCommunities: React.FC = () => {
   return (
-    <section className="mb-8">
-      <h2 className="text-3xl font-bold text-neon-pink mb-6">Top Communities</h2>
+    <div>
+      <h2 className="text-3xl font-bold mb-4 text-dark-gray dark:text-light-gray">Top Communities</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {communities.length > 0 ? (
-          communities.map((community) => (
-            <CommunityCard key={community.id} community={community} />
-          ))
-        ) : (
-          <p className="text-gray-400">No top communities available at the moment.</p>
-        )}
+        {sampleCommunities.map((community) => (
+          <CommunityCard key={community.id} community={community} />
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 

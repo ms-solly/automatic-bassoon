@@ -1,36 +1,20 @@
 import React from 'react';
-import CommunityCard from '../ui/special/cards/CommunityCard';
 
-interface CommunityListProps {
-  type: 'top' | 'category';
-  title: string;
-}
+const categories = ['Cooking', 'Health', 'Lifestyle', 'Fitness', 'Sustainability'];
 
-interface Community {
-  id: number;
-  name: string;
-  members: number;
-  category: string;
-}
-
-const CommunityList: React.FC<CommunityListProps> = ({ type, title }) => {
-  // Placeholder data for communities
-  const communities: Community[] = [
-    { id: 1, name: 'Vegan Recipes', members: 1200, category: 'Recipes' },
-    { id: 2, name: 'Animal Rights Advocates', members: 800, category: 'Animal Rights' },
-    // More community data can be added dynamically
-  ];
-
+const CategoriesList: React.FC = () => {
   return (
-    <div className="mb-8">
-      <h3 className="text-2xl font-bold mb-4 neon-text">{title}</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {communities.map((community) => (
-          <CommunityCard key={community.id} community={community} />
+    <div className="mb-6">
+      <h2 className="text-2xl font-semibold text-dark-gray mb-3">Categories</h2>
+      <ul className="flex flex-wrap gap-4">
+        {categories.map((category) => (
+          <li key={category} className="bg-soft-green hover:shadow-md  shadow-neon-pink rounded-full px-4 py-2 text-center text-dark-gray shadow-md hover:bg-neon-pink transition duration-200">
+            {category}
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };
 
-export default CommunityList;
+export default CategoriesList;

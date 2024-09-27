@@ -1,63 +1,40 @@
+"use client"
+import { Button } from '@/components/ui/button';
 import React, { useState } from 'react';
 
-interface CreateCommunityModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
 
-const CreateCommunityModal: React.FC<CreateCommunityModalProps> = ({ isOpen, onClose }) => {
-  const [name, setName] = useState<string>('');
-  const [description, setDescription] = useState<string>('');
-  const [category, setCategory] = useState<string>('');
+const CreateCommunityModal: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [communityName, setCommunityName] = useState('');
 
-  if (!isOpen) return null;
+  const handleCreateCommunity = () => {
+    console.log('Community Created:', communityName);
+    setCommunityName('');
+    setIsOpen(false);
+  };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-gray-900 p-8 rounded-lg neon-border w-96">
-        <h2 className="text-xl font-bold mb-4 neon-text">Create a Community</h2>
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-          <input 
-            type="text"
-            className="w-full p-2 neon-input rounded"
-            placeholder="Community Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <textarea 
-            className="w-full p-2 neon-input rounded"
-            placeholder="Community Description"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <select 
-            className="w-full p-2 neon-input rounded"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            title='search'
-          >
-            <option value="">Select Category</option>
-            <option value="Recipes">Recipes</option>
-            <option value="Animal Rights">Animal Rights</option>
-            <option value="Health">Health</option>
-          </select>
-          <div className="flex justify-end space-x-2">
-            <button 
-              type="button" 
-              className="px-4 py-2 neon-button rounded" 
-              onClick={onClose}
-            >
-              Cancel
-            </button>
-            <button 
-              type="submit" 
-              className="px-4 py-2 neon-button rounded"
-            >
-              Create
-            </button>
+    <div>
+      <Button onClick={() => setIsOpen(true)} className="bg-neon-blue text-white">Create Community</Button>
+
+      {isOpen && (
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white dark:bg-dark-gray p-5 rounded-lg shadow-lg w-96 transition-shadow duration-300">
+            <h2 className="text-2xl font-bold mb-4 text-dark-gray dark:text-light-gray">Create a New Community</h2>
+            <input
+              type="text"
+              value={communityName}
+              onChange={(e) => setCommunityName(e.target.value)}
+              placeholder="Community Name"
+              className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded-md mb-4 bg-light-gray dark:bg-dark-gray text-dark-gray dark:text-light-gray"
+            />
+            <div className="flex justify-end space-x-2">
+              <Button onClick={() => setIsOpen(false)} className="bg-gray-400 text-white">Cancel</Button>
+              <Button onClick={handleCreateCommunity} className="bg-neon-pink text-white">Create</Button>
+            </div>
           </div>
-        </form>
-      </div>
+        </div>
+      )}
     </div>
   );
 };

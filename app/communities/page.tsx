@@ -1,35 +1,23 @@
-"use client"
-import React, { useState } from 'react';
+import React from 'react';
+import TopCommunities from '@/components/community/TopCommunities';
+import Search from '@/components/community/Search';
+import CategoriesList from '@/components/categories/List';
 import CreateCommunityModal from '@/components/messages/modals/CreateCommunity';
-import CommunityList from '@/components/categories/List';
-import SearchFilterBar from '@/components/community/Search';
 
-const CommunityPage = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
-
+const CommunitiesPage: React.FC = () => {
   return (
-    <div className="min-h-screen text-white p-6">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold neon-text">Communities</h1>
-        <button 
-          onClick={openModal}
-          className="px-6 py-3 neon-button rounded-lg"
-        >
-          Create New Community
-        </button>
+    <div className="p-8 bg-gradient-to-br from-light-green to-light-blue dark:from-dark-blue dark:to-dark-green transition-all duration-300">
+      <h1 className="text-5xl font-bold mb-6 text-dark-gray dark:text-light-gray text-center">Explore Communities</h1>
+      
+      <Search />
+      <CategoriesList />
+
+      <div className="my-8">
+        <TopCommunities />
       </div>
-
-      <SearchFilterBar />
-
-      <CommunityList type="top" title="Top Communities" />
-      <CommunityList type="category" title="Communities by Category" />
-
-      <CreateCommunityModal isOpen={isModalOpen} onClose={closeModal} />
+      <CreateCommunityModal />
     </div>
   );
 };
 
-export default CommunityPage;
+export default CommunitiesPage;
